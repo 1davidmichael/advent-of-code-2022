@@ -1,9 +1,18 @@
 from dataclasses import dataclass
+import math
 
 
 @dataclass
 class Elf:
     food_calories: int
+
+
+def get_calories(elves):
+    total_calories = 0
+    for elf in elves:
+        total_calories += elf.food_calories
+
+    return total_calories
 
 
 def main():
@@ -24,7 +33,8 @@ def main():
             elves[elf_number].food_calories += int(line)
 
     sorted_elves = sorted(elves, key=lambda x: x.food_calories, reverse=True)
-    print(sorted_elves[0].food_calories)
+    print("Part 1 Answer: " + str(sorted_elves[0].food_calories))
+    print("Part 1 Answer: " + str(get_calories(sorted_elves[0:3])))
 
 
 if __name__ == "__main__":
